@@ -304,6 +304,7 @@ class EndEffectorPositioningUR(URBaseEnv):
 
         ## Out of Safety Constraint 
         if not self.check_safety_conditions(action):
+            #print("Safety Constraint Violated")
             reward += -1  
 
         if euclidean_dist_3d <= DISTANCE_THRESHOLD:
@@ -329,11 +330,11 @@ class EndEffectorPositioningUR(URBaseEnv):
     def check_safety_conditions(self, action) -> bool: 
         action = action.astype(np.float32)
 
-        self.elapsed_steps += 1
+        #self.elapsed_steps += 1
 
         # Check if the action is contained in the action space
-        if not self.action_space.contains(action):
-            raise InvalidActionError()
+        #if not self.action_space.contains(action):
+        #    raise InvalidActionError()
 
         # Add missing joints which were fixed at initialization
 
